@@ -20,7 +20,7 @@ def main(args):
     
 
     # Model
-    model = ActiveExtract(asd_pretrained_model='./pretrained_model/pretrain_TalkSet.model')
+    model = ActiveExtract(asd_pretrained_model='../../Checkpoint/TalkNet_TalkSet.model')
     
 
     if (args.distributed and args.local_rank ==0) or args.distributed == False:

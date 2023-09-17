@@ -103,7 +103,7 @@ def main(args):
 
     model = ActiveExtract()
     model = model.cuda()
-    pretrained_model = torch.load('./pretrained_model/ActiveExtract_pretrained.pt')['model']
+    pretrained_model = torch.load(args.checkpoint)['model']
     state = model.state_dict()
 
     for key in state.keys():
@@ -147,6 +147,7 @@ def main(args):
             sisnri = sisnr_est - sisnr_mix
             avg_sisnri += sisnri
             avg_sisnr+=sisnr_est
+            break
 
             if args.save:
                 est_a_tgt = est_a_tgt[0].squeeze().cpu().numpy()
@@ -174,6 +175,8 @@ if __name__ == '__main__':
                         help='directory of audio')
     parser.add_argument('--visual_direc', type=str, default='/workspace2/junjie/dataset/voxceleb2/mp4/',
                         help='directory including test data')
+    parser.add_argument('--checkpoint', type=str, default='../../Checkpoint/ActiveExtract_VoxCeleb2-2mix.pt',
+                        help='the path of trained model')
     parser.add_argument('--num_workers', default=4, type=int,
                         help='Number of workers to generate minibatch')
 
