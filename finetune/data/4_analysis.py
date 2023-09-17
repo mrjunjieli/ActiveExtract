@@ -7,7 +7,7 @@ import csv
 import numpy as np
 
 
-mix_lst_path='/workspace2/junjie/USEV/data/iemocap/new_mixture_data_list_2mix.csv'
+mix_lst_path='./new_mixture_data_list_2mix.csv'
 
 
 TrainTAclips=0 

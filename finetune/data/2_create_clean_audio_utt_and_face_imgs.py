@@ -156,13 +156,13 @@ def main(args):
 
 			audio_save_path = args.clean_audio_data_direc + 'train/' + '/'.join(line[:-1]) + '/' + '_'.join(ln_append[2:]) + '.wav'
 			audio_tgt = audio[pre_end_time:nex_start_time]
-			# audiowrite(audio_save_path , audio_tgt)
+			audiowrite(audio_save_path , audio_tgt)
 
 			v_pre_end_time = round(pre_end_time/16000*25)
 			v_nex_start_time = round(nex_start_time/16000*25)
 			visual_img = images[v_pre_end_time:v_nex_start_time]
 			visual_save_path = args.visual_frame_direc + 'train/' + '/'.join(line[:-1]) + '/' + '_'.join(ln_append[2:]) + '.npy'
-			# write_npy(visual_save_path,visual_img)
+			write_npy(visual_save_path,visual_img)
 
 
 	val_utts = []
@@ -173,7 +173,7 @@ def main(args):
 
 		audio,_=audioread(args.audio_data_direc+line[0]+'/'+line[1]+'/'+line[2]+'.wav')
 		visual_path = args.video_data_direc+line[0]+'/'+line[1]+'/'+line[2]+'.avi'
-		# images = visual_images(visual_path)
+		images = visual_images(visual_path)
 
 		# cut from the random point of the silence region
 		for i, (seg) in enumerate(text_lst):
@@ -206,13 +206,13 @@ def main(args):
 
 			audio_save_path = args.clean_audio_data_direc + 'val/' + '/'.join(line[:-1]) + '/' + '_'.join(ln_append[2:]) + '.wav'
 			audio_tgt = audio[pre_end_time:nex_start_time]
-			# audiowrite(audio_save_path , audio_tgt)
+			audiowrite(audio_save_path , audio_tgt)
 
 			v_pre_end_time = round(pre_end_time/16000*25)
 			v_nex_start_time = round(nex_start_time/16000*25)
 			visual_img = images[v_pre_end_time:v_nex_start_time]
 			visual_save_path = args.visual_frame_direc + 'val/' + '/'.join(line[:-1]) + '/' + '_'.join(ln_append[2:]) + '.npy'
-			# write_npy(visual_save_path,visual_img)
+			write_npy(visual_save_path,visual_img)
 
 
 	test_utts = []
@@ -223,7 +223,7 @@ def main(args):
 
 		audio,_=audioread(args.audio_data_direc+line[0]+'/'+line[1]+'/'+line[2]+'.wav')
 		visual_path = args.video_data_direc+line[0]+'/'+line[1]+'/'+line[2]+'.avi'
-		# images = visual_images(visual_path)
+		images = visual_images(visual_path)
 
 
 		# cut from the random point of the silence region
@@ -257,13 +257,13 @@ def main(args):
 
 			audio_save_path = args.clean_audio_data_direc + 'test/' + '/'.join(line[:-1]) + '/' + '_'.join(ln_append[2:]) + '.wav'
 			audio_tgt = audio[pre_end_time:nex_start_time]
-			# audiowrite(audio_save_path , audio_tgt)
+			audiowrite(audio_save_path , audio_tgt)
 
 			v_pre_end_time = round(pre_end_time/16000*25)
 			v_nex_start_time = round(nex_start_time/16000*25)
 			visual_img = images[v_pre_end_time:v_nex_start_time]
 			visual_save_path = args.visual_frame_direc + 'test/' + '/'.join(line[:-1]) + '/' + '_'.join(ln_append[2:]) + '.npy'
-			# write_npy(visual_save_path,visual_img)
+			write_npy(visual_save_path,visual_img)
 
 	print(len(test_utts))
 	print(len(val_utts))

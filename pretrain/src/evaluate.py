@@ -111,7 +111,7 @@ def main(args):
         if pretrain_key in pretrained_model.keys():
             state[key] = pretrained_model[pretrain_key]
         else:
-            print('not load',key)
+            print("not %s loaded" % pretrain_key)
     model.load_state_dict(state)
 
 
@@ -147,7 +147,6 @@ def main(args):
             sisnri = sisnr_est - sisnr_mix
             avg_sisnri += sisnri
             avg_sisnr+=sisnr_est
-            break
 
             if args.save:
                 est_a_tgt = est_a_tgt[0].squeeze().cpu().numpy()
