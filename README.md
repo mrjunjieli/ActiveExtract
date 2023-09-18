@@ -1,5 +1,7 @@
 # ActiveExtract 
-A pytorch implement of Audio-Visual Active Speaker Extraction for Sparsely Overlapped Multi-talker Speech.  
+A pytorch implement of Audio-Visual Active Speaker Extraction for Sparsely Overlapped Multi-talker Speech. This paper has been submitted to ICASSP2024.  
+
+Arxiv: https://arxiv.org/pdf/2309.08408.pdf
 
 This project aims at real-world speech scenarios where conversations are sparsely overlapped. 
 
