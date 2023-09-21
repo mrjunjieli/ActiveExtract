@@ -140,13 +140,13 @@ def main(args):
             a_tgt = a_tgt.cuda().float()
             v_tgt = v_tgt.cuda().float()
             a_mix_mfcc = a_mix_mfcc.cuda().float()
-
             est_a_tgt = model(a_mix,a_mix_mfcc,v_tgt)
             sisnr_mix = cal_SISNR(a_tgt, a_mix)
             sisnr_est = cal_SISNR(a_tgt, est_a_tgt)
             sisnri = sisnr_est - sisnr_mix
             avg_sisnri += sisnri
             avg_sisnr+=sisnr_est
+
 
             if args.save:
                 est_a_tgt = est_a_tgt[0].squeeze().cpu().numpy()
@@ -170,7 +170,7 @@ if __name__ == '__main__':
     # Dataloader
     parser.add_argument('--mix_lst_path', type=str, default='../data/audio_mixture/mixture_data_list_2mix.csv',
                         help='directory including train data')
-    parser.add_argument('--mixture_direc', type=str, default='../data/audio_mixture/',
+    parser.add_argument('--mixture_direc', type=str, default='/workspace2/junjie/dataset/voxceleb2/audio_mixture/2_mix_min_800/',
                         help='directory of audio')
     parser.add_argument('--visual_direc', type=str, default='/workspace2/junjie/dataset/voxceleb2/mp4/',
                         help='directory including test data')

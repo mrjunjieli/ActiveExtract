@@ -12,7 +12,6 @@ def main(args):
         torch.cuda.set_device(args.local_rank)
         torch.distributed.init_process_group(backend='nccl', init_method='env://')
 
-    
 
     # Model
     model = ActiveExtract(asd_pretrained_model='../../Checkpoint/TalkNet_TalkSet.model')
@@ -37,10 +36,8 @@ def main(args):
     model = model.cuda()
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 
-    if args.dynamic:
-        train_sampler, train_generator = get_dataloader_dy(args,partition='train')
-    else:
-        train_sampler, train_generator = get_dataloader(args,partition='train')
+ 
+    train_sampler, train_generator = get_dataloader(args,partition='train')
     _, val_generator = get_dataloader(args, partition='val')
     
     args.train_sampler=train_sampler
@@ -64,7 +61,6 @@ if __name__ == '__main__':
                         help='directory including test data')
     parser.add_argument('--mixture_direc', type=str, default='/workspace2/junjie/datasets/Voxcele2/2_mix_min_800/',
                         help='directory of audio')
-    parser.add_argument('--dynamic', type=int, default=0,help='whether dynamic mixing for training')
 
     # Training    
     parser.add_argument('--batch_size', default=8, type=int,
