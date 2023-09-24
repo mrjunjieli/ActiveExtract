@@ -1,1 +1,1 @@
-download pretrained models from 'https://drive.google.com/drive/u/0/folders/1zJFirCZjs8zLIKmibCGn-tIuBDySJdMl' to this folder
+download pretrained models from 'https://drive.google.com/drive/folders/1zJFirCZjs8zLIKmibCGn-tIuBDySJdMl?usp=sharing' to this folder
