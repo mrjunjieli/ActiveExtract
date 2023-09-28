@@ -1,7 +1,6 @@
 from pickletools import optimize
 import time
-from apex import amp
-from apex.parallel import DistributedDataParallel as DDP
+from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.tensorboard import SummaryWriter
 import torch.distributed as dist
 import torch.nn as nn 
@@ -39,7 +38,7 @@ class Solver(object):
 
 
         if self.args.distributed:
-            self.model = DDP(self.model)
+            self.model = DDP(self.model, find_unused_parameters=True)
 
         self._reset()
 

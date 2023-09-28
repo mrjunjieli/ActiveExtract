@@ -10,6 +10,8 @@ import math
 
 from torch.cuda.amp import GradScaler
 from torch.cuda.amp import autocast
+from torch.nn.parallel import DistributedDataParallel as DDP
+
 
 
 scaler = GradScaler()
@@ -37,6 +39,8 @@ class Solver(object):
 
         self.model = model 
         self.optimizer = optimizer
+        if self.args.distributed:
+            self.model = DDP(self.model, find_unused_parameters=True)
 
 
         self._reset()
