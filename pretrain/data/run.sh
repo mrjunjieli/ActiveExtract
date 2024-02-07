@@ -34,7 +34,7 @@ if [ ! -f $mixture_data_list ];then
     --audio_data_direc $audio_data_direc \
     --min_length $min_length \  
     --sampling_rate $sampling_rate \
-    --mixture_data_list $mixture_data_list \
+    --mixture_data_list $mixture_data_list 
     else
     echo $mixture_data_list' exist!'
 fi
